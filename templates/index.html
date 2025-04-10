@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinProtect - Smart Fraud Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #141e30, #243b55);
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #00e6e6;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00e6e6;
+    }
+
+    .user-info {
+      margin-left: 20px;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      background: url('https://images.unsplash.com/photo-1581093588401-7c2c28b6c865?auto=format&fit=crop&w=1450&q=80') no-repeat center center/cover;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #ddd;
+    }
+
+    .hero a {
+      padding: 12px 28px;
+      background-color: #00e6e6;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+
+    .hero a:hover {
+      background-color: #00cccc;
+    }
+
+    section.features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 60px 5%;
+      background: #1c1f2b;
+    }
+
+    .feature-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+      animation: fadeInZoom 1s ease forwards;
+      opacity: 0;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .feature-box h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      color: #00e6e6;
+    }
+
+    section.testimonials, section.pricing {
+      padding: 60px 5%;
+      background-color: #20242f;
+      text-align: center;
+    }
+
+    .testimonial, .pricing-plan {
+      max-width: 500px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial:hover, .pricing-plan:hover {
+      transform: translateY(-8px);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      color: #ccc;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 10px;
+      color: #00e6e6;
+    }
+
+    .pricing-plan h3 {
+      font-size: 1.6rem;
+      color: #00e6e6;
+      margin-bottom: 10px;
+    }
+
+    .pricing-plan ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 15px;
+    }
+
+    .pricing-plan ul li {
+      margin: 10px 0;
+      color: #ccc;
+    }
+
+    footer {
+      padding: 20px 5%;
+      background: #141e30;
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInZoom {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">FinProtect</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#features">Features</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#pricing">Pricing</a>
+      <!-- <a href="#contact">Contact</a> -->
+      <!-- <span class="user-info">Welcome, {{ user_email }}</span> -->
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Smart Credit Card Fraud Detection</h1>
+      <p>Protect your digital finances with real-time AI-powered fraud analytics and secure transaction monitoring.</p>
+      <a href="/dashboard">Check Transaction</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="feature-box" style="animation-delay: 0.2s">
+      <h3>Real-Time Alerts</h3>
+      <p>Instant fraud warnings to keep you ahead of cyber threats and unauthorized transactions.</p>
+    </div>
+    <div class="feature-box" style="animation-delay: 0.4s">
+      <h3>AI Pattern Detection</h3>
+      <p>Machine learning models trained on thousands of patterns to detect anomalies effectively.</p>
+    </div>
+    <div class="feature-box" style="animation-delay: 0.6s">
+      <h3>User Dashboard</h3>
+      <p>Easy-to-use interface to review recent transactions and system alerts in one place.</p>
+    </div>
+    <div class="feature-box" style="animation-delay: 0.8s">
+      <h3>Secure Database</h3>
+      <p>We use encrypted communication and secure storage to keep your data safe 24/7.</p>
+    </div>
+    <div class="feature-box" style="animation-delay: 1s">
+      <h3>Transaction History</h3>
+      <p>View and track your complete payment history with filters and downloadable reports.</p>
+    </div>
+    <div class="feature-box" style="animation-delay: 1.2s">
+      <h3>Profile Insights</h3>
+      <p>Visualize personal risk level, login activity, and fraud predictions through your profile panel.</p>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial">
+      <p>"FinProtect saved my business from a major fraud attack. Highly accurate and fast!"</p>
+      <strong>- Maya Patel, E-Commerce Owner</strong>
+    </div>
+    <div class="testimonial">
+      <p>"I love how simple the dashboard is. I can track every transaction with confidence."</p>
+      <strong>- Raj Verma, Freelancer</strong>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <h2>Plans & Pricing</h2>
+    <div class="pricing-plan">
+      <h3>Free</h3>
+      <ul>
+        <li>Basic Fraud Detection</li>
+        <li>Up to 100 Transactions</li>
+        <li>Email Alerts Only</li>
+      </ul>
+    </div>
+    <div class="pricing-plan">
+      <h3>Pro - ₹499/month</h3>
+      <ul>
+        <li>Real-Time Alerts</li>
+        <li>Unlimited Transactions</li>
+        <li>Priority Support</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2024 FinProtect. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* General Styles */
+body {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Signup Card Styling */
+.signup-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+/* Input Fields */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #6a11cb;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2575fc;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #2575fc;
+}
+
+a:hover {
+    text-decoration: underline;
+}

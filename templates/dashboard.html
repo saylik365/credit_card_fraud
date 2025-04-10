@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinProtect - Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0e101a;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 60px;
+    }
+
+    .dashboard-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      padding: 20px;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .form-section {
+      flex: 1;
+      min-width: 300px;
+      background: #1c1f2b;
+      padding: 30px 25px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 230, 230, 0.05);
+      animation: fadeInZoom 0.8s ease forwards;
+    }
+
+    .form-section h4 {
+      color: #00e6e6;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      color: #fff;
+    }
+
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 5px #00e6e6;
+      color: #fff;
+    }
+
+    .btn-submit {
+      background: #00e6e6;
+      border: none;
+      font-weight: bold;
+      padding: 12px;
+      width: 100%;
+      border-radius: 10px;
+      color: #000;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .btn-submit:hover {
+      background: #00cccc;
+    }
+
+    .logout-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff4d4d;
+      border: none;
+      padding: 10px 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(255, 77, 77, 0.6);
+      transition: background 0.3s ease;
+      z-index: 999;
+    }
+
+    .logout-btn:hover {
+      background: #e60000;
+    }
+
+    .alert {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #fff;
+    }
+
+    @keyframes fadeInZoom {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/logout" class="logout-btn">Logout</a>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container mt-3">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} text-center" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <form action="/dashboard" method="POST" class="dashboard-container">
+
+    <!-- Relevant part only — updated step="any" -->
+<!-- Section 1 -->
+<div class="form-section">
+    <h4>Basic Transaction Info</h4>
+    <div class="mb-3">
+      <label class="form-label">Time</label>
+      <input type="number" step="any" name="time" class="form-control" required>
+    </div>
+    {% for i in range(1, 8) %}
+    <div class="mb-3">
+      <label class="form-label">Feature {{ i }}</label>
+      <input type="number" step="any" name="feature{{ i }}" class="form-control" required>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <!-- Section 2 -->
+  <div class="form-section">
+    <h4>Advanced Transaction Info</h4>
+    {% for i in range(8, 14) %}
+    <div class="mb-3">
+      <label class="form-label">Feature {{ i }}</label>
+      <input type="number" step="any" name="feature{{ i }}" class="form-control" required>
+    </div>
+    {% endfor %}
+    <div class="mb-3">
+      <label class="form-label">Amount</label>
+      <input type="number" step="any" name="amount" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-submit">Submit</button>
+  </div>
+</form>  
+</body>
+</html>
